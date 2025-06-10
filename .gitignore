@@ -7,6 +7,8 @@
 .sfdx/
 .localdevserver/
 deploy-options.json
+# Ignore certificate files
+server.crt
 
 # LWC VSCode autocomplete
 **/lwc/jsconfig.json
