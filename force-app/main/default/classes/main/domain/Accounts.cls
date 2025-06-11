@@ -2,7 +2,7 @@ public class Accounts extends fflib_SObjects implements IAccounts {
   public static IAccounts newInstance(List<Account> recordList) {
     return (IAccounts) Application.Domain.newInstance(recordList);
   }
-
+//test this out
   public static IAccounts newInstance(Set<Id> recordIdSet) {
     return (IAccounts) Application.Domain.newInstance(recordIdSet);
   }
