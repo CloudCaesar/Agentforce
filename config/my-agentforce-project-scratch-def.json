@@ -1,10 +1,38 @@
 {
-  "orgName": "GenAI Scratch Org",
-  "edition": "Partner Developer",
-  "features": ["Einstein1AIPlatform"],
+  "orgName": "AgentforceEinsteinScratchOrg",
+  "edition": "Enterprise",
+  "features": [
+    "EnableSetPasswordInApi",
+    "Einstein1AIPlatform",
+    "EINSTEINGPT",
+    "EINSTEINGPTPLATFORM",
+    "EINSTEINGPTPROMPTBUILDER",
+    "EINSTEINGENERATIVESERVICES",
+    "EINSTEINLLMREQUESTSHOURLY",
+    "Copilot",
+    "ForceComPlatform",
+    "Communities",
+    "PartnerCommunity"
+  ],
   "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
     "einsteinGptSettings": {
       "enableEinsteinGptPlatform": true
+    },
+    "agentPlatformSettings": {
+      "enableAgentPlatform": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "dataCloudSettings": {
+      "enableDataCloud": true
     }
-  }
+  },
+  "hasSampleData": true
 }
