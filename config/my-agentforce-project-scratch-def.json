@@ -29,9 +29,6 @@
     },
     "communitiesSettings": {
       "enableNetworksEnabled": true
-    },
-    "dataCloudSettings": {
-      "enableDataCloud": true
     }
   },
   "hasSampleData": true
