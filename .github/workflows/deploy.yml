@@ -4,7 +4,14 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'force-app/**'
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'master'
 
 jobs:
   deploy:
@@ -12,6 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch || 'master' }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -20,6 +29,16 @@ jobs:
 
       - name: Install Salesforce CLI
         run: npm install -g @salesforce/cli
+
+      - name: Debug Secrets
+        run: |
+          echo "SF_CONSUMER_KEY length: ${#SF_CONSUMER_KEY}"
+          echo "SF_USERNAME: ${SF_USERNAME}"
+          echo "SF_LOGIN_URL: ${SF_LOGIN_URL}"
+        env:
+          SF_CONSUMER_KEY: ${{ secrets.SF_CONSUMER_KEY }}
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_LOGIN_URL: ${{ secrets.SF_LOGIN_URL }}
 
       - name: Authenticate to Production
         run: |
@@ -33,5 +52,6 @@ jobs:
       - name: Deploy to Production
         run: |
           sf project deploy start --source-dir force-app \
-                                 --test-level RunLocalTests \
-                                 --wait 300
+              --test-level RunLocalTests \
+              --wait 300 \
+              --ignore-conflicts
